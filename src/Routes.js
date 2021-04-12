@@ -1,25 +1,14 @@
-import {Route} from 'react-router-dom';
-import VendingMachine from './VendingMachine';
-import Soda from './Soda';
-import Chips from './Chips';
-import Sardines from './Sardines';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import DogList from './DogList';
+import Dog from './Dog';
 
-function Routes() {
+function Routes({dogs}) {
   return (
-    <div>
-      <Route exact path='/'> 
-        <VendingMachine />
-      </Route>
-      <Route exact path='/soda'>
-        <Soda />
-      </Route>
-      <Route exact path='/chips'>
-        <Chips />
-      </Route>
-      <Route exact path='/sardines'>
-        <Sardines />
-      </Route>
-    </div>
+    <Switch>
+      <Route exact path='/dogs'><DogList dogs={dogs}/></Route>
+      <Route exact path='/dogs/:name'><Dog dogs={dogs}/></Route>
+      <Redirect to="/dogs" />
+    </Switch>
   );
 }
 export default Routes;

@@ -1,13 +1,13 @@
-import {NavLink} from 'react-router-dom'
-import "./NavBar.css"
+import { NavLink } from 'react-router-dom';
+import "./NavBar.css";
 
-function NavBar() {
+function NavBar({ dogs }) {
   return (
-  <nav className="NavBar">
-    <NavLink exact to="/chips">Chips</NavLink>
-    <NavLink exact to="/sardines">Sardines</NavLink>
-    <NavLink exact to="/soda">Soda</NavLink>
-  </nav>
+    <nav className="NavBar">
+      {dogs.map(d => (
+        <NavLink key={d.name} to={`/dogs/${d.name.toLowerCase()}`}>{d.name}</NavLink>
+      ))}
+    </nav>
   );
 }
 export default NavBar;
